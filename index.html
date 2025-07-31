@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificate Verifier</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e9f5f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      color: #198754;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #198754;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    iframe {
+      margin-top: 25px;
+      width: 100%;
+      height: 500px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Certificate Verifier</h1>
+    <input type="text" id="certId" placeholder="Enter Certificate ID">
+    <button onclick="verifyCert()">Verify</button>
+    <iframe id="resultFrame"></iframe>
+  </div>
+
+  <script>
+    function verifyCert() {
+      const certId = document.getElementById('certId').value.trim();
+      if (!certId) {
+        alert("Please enter a Certificate ID.");
+        return;
+      }
+      const iframe = document.getElementById('resultFrame');
+      iframe.src = `https://script.google.com/macros/s/AKfycbw6_wgP6Ua11oKz9iOMGkyGoVKtGJ8l0PECtWC_aW35DLIDLRd53Vt0tg8xvkjipSgm/exec?id=${encodeURIComponent(certId)}`;
+    }
+  </script>
+</body>
+</html>
